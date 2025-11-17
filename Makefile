@@ -12,7 +12,7 @@ OBJS := $(BUILD_DIR)/protocol.o
 BIN := $(BUILD_DIR)/test_main
 
 # Tests need bzero; emulate via memset without touching sources
-TEST_DEFS := -Dbzero(x,n)=memset(x,0,n)
+TEST_DEFS := '-Dbzero(x,n)=memset(x,0,n)'
 TEST_CFLAGS := $(CFLAGS) $(CMOCKA_CFLAGS) $(TEST_DEFS)
 
 .PHONY: all clean test

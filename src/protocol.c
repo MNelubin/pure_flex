@@ -30,7 +30,8 @@ static int write_flag(FILE *stream, uint8_t *out_byte, int *bit_pos) {
 
 static int pad_ones_to_byte(FILE *stream, uint8_t *out_byte, int *bit_pos) {
     if (*bit_pos != 7) {
-        while (*bit_pos >= 0) {
+        int remaining = *bit_pos + 1;
+        for (int i = 0; i < remaining; ++i) {
             if (write_bit(stream, 1, out_byte, bit_pos) < 0) {
                 return -1;
             }
